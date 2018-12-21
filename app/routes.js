@@ -225,23 +225,23 @@ module.exports = function(app, passport,io,info) {
 
     //xu ly dang ky
    app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect : '/profile', // –i?u hu?ng t?i trang hi?n th? profile
-        failureRedirect : '/signup', // Tr? l?i trang dang k˝ n?u l?i
+        successRedirect : '/profile', //chuyen huong toi profile neu dang nhap thanh cong
+        failureRedirect : '/signup', // quay lai vi tri ban dau neu fail
         failureFlash : true 
         
     }));
 
     // =====================================
-    // ThÙng tin user dang k˝ =====================
+    // Th√¥ng tin user dang k√Ω =====================
     // =====================================
     app.get('/profile', isLoggedIn, function(req, res) {
         res.render('profile.ejs', {
-            user : req.user // truy?n d?i tu?ng user cho profile.ejs d? hi?n th? lÍn view
+            user : req.user // push info user len profile
         });
     });
 
     // =====================================
-    // –ang xu?t ==============================
+    // √êang xu?t ==============================
     // =====================================
     app.get('/logout', function(req, res) {
         req.logout();
